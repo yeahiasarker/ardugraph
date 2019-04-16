@@ -1,7 +1,7 @@
-# GraphMySerial
+# Ardugraph
 A graphical visualization tool of serial communication
 ## Overview
- GraphMySerial is a graphical visualization module to monitor serial data in a nice chart. It uses matplotlib and pyserial as backend. 
+ Ardugraph is a graphical visualization module to monitor serial data in a nice chart. It uses matplotlib and pyserial as backend. 
   ####  - Pyserial 
  PySerial is a cross-platform module which provides support for serial connections ("RS-232") over a variety of different devices: old-style serial ports, Bluetooth dongles, infra-red ports, and so on. It also supports remote serial ports via RFC 2217. [Click here for more details](https://pythonhosted.org/pyserial/)
  #### - Matplotlib
