@@ -18,7 +18,7 @@ class helloserial:
         """ Initializing serial communication """
         self.controller = serial.Serial( port = '/dev/atty1', baudrate = baudrate, timeout = timeout)
         if self.controller.isOpen():
-            print("Serial port is created")
+            print("Serial Communication has been established")
         else:
             try:
                 self.controller.open()
