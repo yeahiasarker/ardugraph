@@ -50,10 +50,12 @@ class helloserial:
             data = data + i
         return data
 
-    def read_data(self):
-        serial_data = self.controller.read()
-        final_data = self.preprocessing_data(serial_data)
-        return final_data
+    def read_continuous_data(self):
+        while True:
+            try:
+            serial_data = self.controller.readline()
+            except Exception as e:
+                print()
     
     def plot_data(self):
         """ Ploting data using matplotlib """
