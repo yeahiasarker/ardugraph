@@ -11,7 +11,8 @@ import json
 import logging
 import serial
 import string
-from sys import exit
+import sys
+import time
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
@@ -31,25 +32,34 @@ class helloserial:
             except Exception:
                 logging.ERROR("couldn't establish serial communication")
                 logging.ERROR("please check the port and baudrate")
-                exit()
+                sys.exit()
     def logging_data():
         """ saving the arduino sensor information in a log file"""
         with open('sensor_data.log','w') as f:
-            json.dump(get_data, f)
+            json.dump(read_data, f)
+    def show_data():
+        """ Loading json sensor data log file """
         
-    def preprocessing_data(strin):
+    def preprocessing_data(serial_data):
         """ data preprocessing """
         data = ""
-        strin = strin.decode()
-        printable = set(string.printable) # Removing non-ascii characters
+        serial_data = serial_data.decode()
+        printable = set(serial_data.printable) # Removing non-ascii characters
         filter(lambda x: x in printable, s)
         for i in x: # this loop will exclude all special characters
             data = data + i
         return data
 
-    def get_data(self):
+    def read_data(self):
         serial_data = self.controller.read()
-        final_data = preprocessing_data(serial_data)
+        final_data = self.preprocessing_data(serial_data)
         return final_data
+    
+    def plot_data(self):
+        """ Ploting data using matplotlib """
+        
+    def write_data():
+        """ writing data to arduino """
+        
         
         #Enough for today
