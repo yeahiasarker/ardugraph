@@ -20,18 +20,18 @@ from matplotlib.ticker import FormatStrFormatter
 
 
 class helloserial:
-    def __init__(self, controller, baudrate = 9600, timeout = 0):
+    def __init__(self, baudrate = 9600, timeout = 0):
         """ initializing serial communication """
         self.logging.basicConfig(filename = "error.log", level = logging.INFO, format = '%(asctime)s:%(levelname)s:%(message)s')
         self.controller = serial.Serial( port = '/dev/atty1', baudrate = baudrate, timeout = timeout)
         if self.controller.isOpen():
-            logging.INFO('serial communication has been established')
+            #logging.INFO('serial communication has been established')
         else:
             try:
                 self.controller.open()
             except Exception:
-                logging.ERROR("couldn't establish serial communication")
-                logging.ERROR("please check the port and baudrate")
+                #logging.ERROR("couldn't establish serial communication")
+                #logging.ERROR("please check the port and baudrate")
                 sys.exit()
     def logging_data():
         """ saving the arduino sensor information in a log file"""
@@ -50,10 +50,11 @@ class helloserial:
             data = data + i
         return data
 
-    def read_continuous_data(self):
+    def read_continuous_data():
         while True:
             try:
-            serial_data = self.controller.readline()
+                serial_data = self.controller.readline()
+                print(serial_data)
             except Exception as e:
                 print()
     
@@ -62,6 +63,9 @@ class helloserial:
         
     def write_data():
         """ writing data to arduino """
+
+man = helloserial();
+man.read_continuous_data()
         
         
         #Enough for today
